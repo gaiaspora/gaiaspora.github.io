@@ -1,0 +1,126 @@
+---
+---
+
+// Fonts
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('/assets/fonts/OpenSans-Regular-webfont.eot');
+    src: url('/assets/fonts/OpenSans-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/assets/fonts/OpenSans-Regular-webfont.woff') format('woff'),
+         url('/assets/fonts/OpenSans-Regular-webfont.ttf') format('truetype'),
+         url('/assets/fonts/OpenSans-Regular-webfont.svg#open_sansregular') format('svg');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('/assets/fonts/OpenSans-Italic-webfont.eot');
+    src: url('/assets/fonts/OpenSans-Italic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/assets/fonts/OpenSans-Italic-webfont.woff') format('woff'),
+         url('/assets/fonts/OpenSans-Italic-webfont.ttf') format('truetype'),
+         url('/assets/fonts/OpenSans-Italic-webfont.svg#open_sansitalic') format('svg');
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('/assets/fonts/OpenSans-Bold-webfont.eot');
+    src: url('/assets/fonts/OpenSans-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/assets/fonts/OpenSans-Bold-webfont.woff') format('woff'),
+         url('/assets/fonts/OpenSans-Bold-webfont.ttf') format('truetype'),
+         url('/assets/fonts/OpenSans-Bold-webfont.svg#open_sansbold') format('svg');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('/assets/fonts/OpenSans-BoldItalic-webfont.eot');
+    src: url('/assets/fonts/OpenSans-BoldItalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/assets/fonts/OpenSans-BoldItalic-webfont.woff') format('woff'),
+         url('/assets/fonts/OpenSans-BoldItalic-webfont.ttf') format('truetype'),
+         url('/assets/fonts/OpenSans-BoldItalic-webfont.svg#open_sansbold_italic') format('svg');
+    font-weight: 700;
+    font-style: italic;
+}
+
+
+
+
+// Bootstrap customization
+
+$font-family-sans-serif: "Open Sans", sans-serif;
+$font-size-base: 16px;
+$headings-font-weight: 400;
+
+
+// Import Bootstrap
+
+@import "bootstrap";
+
+
+// Custom CSS
+
+    /* Navbar */
+    .navbar-btn {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+    .navbar {
+        margin-bottom: 0;
+    }
+    .navbar-collapse {
+        max-height: none;
+    }
+
+
+    /* Sticky footer */
+    html {
+        position: relative;
+        min-height: 100%;
+    }
+    #footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        background-color: #f5f5f5;
+    }
+    #footbar {
+        margin: 20px 0;
+    }
+
+
+    /* Page list table modifications */
+    table.list tbody tr td, table.list tbody tr th {
+        vertical-align: middle;
+    }
+    table.list {
+        margin-bottom: 0px;
+    }
+    table.list thead {
+        background: white;
+    }
+    
+
+    /* Screen sizes */
+    @media (max-width: 767px) {
+        .footerspacer {
+            height: 11em;
+        }
+    }
+
+
+    @media (min-width: 768px) {
+        .footerspacer {
+            height: 30em;
+        }
+        table.list tbody tr td {
+            min-width: 100px;
+        }
+        table.list .catid {
+            min-width: 70px;
+        }
+    }

@@ -1,0 +1,11 @@
+{% capture defaultmetadata %}
+{% if page.title contains 'Gaiaspora' %}
+    <title>{{ page.title }}</title>
+{% else %}
+    <title>{{ page.title }} | {{ site.name }}</title>
+{% endif %}
+{% if page.description %}
+    <meta name="description" content="{{ page.description }}">
+{% endif %}
+<meta name="generator" content="https://pages.github.com/versions/">
+{% endcapture %}{{ defaultmetadata | strip_newlines | replace: '    ', '' | replace: '    ', '' | replace: '  ', ' ' }}

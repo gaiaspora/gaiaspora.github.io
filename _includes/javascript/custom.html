@@ -1,0 +1,13 @@
+<script type="text/javascript">
+    {% include javascript/underscore-min.js %}
+</script>
+<script type="text/javascript">
+    {% include javascript/jquery.floatThead-slim.min.js %}
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('table.list').floatThead({
+            useAbsolutePositioning: false
+        });
+    });
+</script>

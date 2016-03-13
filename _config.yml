@@ -1,0 +1,20 @@
+### Jekyll ###
+safe: true
+lsi: false
+markdown: kramdown
+encoding: "UTF-8"
+excerpt_separator: ""
+
+### Website ###
+name: Gaiaspora Logs
+url: "http://gaiaspora.github.io"
+
+### Sass ###
+sass:
+    style: compressed
+
+### GitHub ###
+github_view: "https://github.com/gaiaspora/gaiaspora.github.io/blob/master/"
+github_edit: "https://github.com/gaiaspora/gaiaspora.github.io/edit/master/"
+github_hist: "https://github.com/gaiaspora/gaiaspora.github.io/commits/master/"
+github_raw: "https://raw.githubusercontent.com/gaiaspora/gaiaspora.github.io/master/"

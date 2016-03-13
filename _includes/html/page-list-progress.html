@@ -1,0 +1,104 @@
+{% assign total = 0 %}
+{% assign transcriptiondone = 0 %}
+{% assign transcriptioninprogress = 0 %}
+{% assign reviewdone = 0 %}
+{% assign reviewinprogress = 0 %}
+{% assign reviewneeded = 0 %}
+{% assign indexdone = 0 %}
+{% assign indexinprogress = 0 %}
+{% assign indexneeded = 0 %}
+
+{% for post in site.data.nb %}
+    {% capture total %}{{ total | plus: 1 }}{% endcapture %}
+
+    {% if post.Transcription == 'done' %}
+        {% capture transcriptiondone %}{{ transcriptiondone | plus: 1 }}{% endcapture %}
+    {% endif %}
+    {% if post.Transcription == 'in progress' %}
+        {% capture transcriptioninprogress %}{{ transcriptioninprogress | plus: 1 }}{% endcapture %}
+    {% endif %}
+
+    {% if post.Review == 'done' %}
+        {% capture reviewdone %}{{ reviewdone | plus: 1 }}{% endcapture %}
+    {% endif %}
+    {% if post.Review == 'in progress' %}
+        {% capture reviewinprogress %}{{ reviewinprogress | plus: 1 }}{% endcapture %}
+    {% endif %}
+    {% if post.Review == 'needed' %}
+        {% capture reviewneeded %}{{ reviewneeded | plus: 1 }}{% endcapture %}
+    {% endif %}
+
+    {% if post.Index == 'done' %}
+        {% capture indexdone %}{{ indexdone | plus: 1 }}{% endcapture %}
+    {% endif %}
+    {% if post.Index == 'in progress' %}
+        {% capture indexinprogress %}{{ indexinprogress | plus: 1 }}{% endcapture %}
+    {% endif %}
+    {% if post.Index == 'needed' %}
+        {% capture indexneeded %}{{ indexneeded | plus: 1 }}{% endcapture %}
+    {% endif %}
+{% endfor %}
+
+{% capture transcriptiondone %}{{ transcriptiondone | times: 100 | divided_by: total }}%{% endcapture %}
+{% capture transcriptioninprogress %}{{ transcriptioninprogress | times: 100 | divided_by: total }}%{% endcapture %}
+{% capture transcriptionneeded %}{{ 100 | minus: transcriptiondone | minus: transcriptioninprogress }}%{% endcapture %}
+
+{% capture reviewdone %}{{ reviewdone | times: 100 | divided_by: total }}%{% endcapture %}
+{% capture reviewinprogress %}{{ reviewinprogress | times: 100 | divided_by: total }}%{% endcapture %}
+{% capture reviewneeded %}{{ reviewneeded | times: 100 | divided_by: total }}%{% endcapture %}
+{% capture reviewthreshold %}{{ 100 | minus: reviewdone | minus: reviewinprogress | minus: reviewneeded }}%{% endcapture %}
+
+{% capture indexdone %}{{ indexdone | times: 100 | divided_by: total }}%{% endcapture %}
+{% capture indexinprogress %}{{ indexinprogress | times: 100 | divided_by: total }}%{% endcapture %}
+{% capture indexneeded %}{{ indexneeded | times: 100 | divided_by: total }}%{% endcapture %}
+{% capture indexthreshold %}{{ 100 | minus: indexdone | minus: indexinprogress | minus: indexneeded }}%{% endcapture %}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title text-center">Overall progress</h3>
+    </div>
+    <div class="panel-body">
+        <p><strong>Transcription:</strong></p>
+        <div class="progress progress-trans">
+            <div class="progress-bar progress-bar-success" style="width: {{ transcriptiondone }}">
+                <span class="sr-only">{{ transcriptiondone }} done</span>
+            </div>
+            <div class="progress-bar progress-bar-warning" style="width: {{ transcriptioninprogress }}">
+                <span class="sr-only">{{ transcriptioninprogress }} in progress</span>
+            </div>
+            <div class="progress-bar progress-bar-danger" style="width: {{ transcriptionneeded }}">
+                <span class="sr-only">{{ transcriptionneeded }} needed</span>
+            </div>
+        </div>
+
+        {% if reviewthreshold > '90' %}
+        <p><strong>Review:</strong></p>
+        <div class="progress progress-trans">
+            <div class="progress-bar progress-bar-success" style="width: {{ reviewdone }}">
+                <span class="sr-only">{{ reviewdone }} done</span>
+            </div>
+            <div class="progress-bar progress-bar-warning" style="width: {{ reviewinprogress }}">
+                <span class="sr-only">{{ reviewinprogress }} in progress</span>
+            </div>
+            <div class="progress-bar progress-bar-danger" style="width: {{ reviewneeded }}">
+                <span class="sr-only">{{ reviewneeded }} needed</span>
+            </div>
+        </div>
+        {% endif %}
+ 
+        {% if indexthreshold > '90' %}
+        <p><strong>Index:</strong></p>
+        <div class="progress progress-trans">
+            <div class="progress-bar progress-bar-success" style="width: {{ indexdone }}">
+                <span class="sr-only">{{ indexdone }} done</span>
+            </div>
+            <div class="progress-bar progress-bar-warning" style="width: {{ indexinprogress }}">
+                <span class="sr-only">{{ indexinprogress }} in progress</span>
+            </div>
+            <div class="progress-bar progress-bar-danger" style="width: {{ indexneeded }}">
+                <span class="sr-only">{{ indexneeded }} needed</span>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
